@@ -1,11 +1,34 @@
 {
   "name": "render-big-data",
-  "private": true,
-  "version": "0.0.0",
+  "version": "0.2.3",
+  "license": "MIT",
+  "description": "A web component support big amount data list with high render performance and efficient.",
   "type": "module",
+  "main": "./dist/cjs/lib/index",
+  "module": "./dist/es/lib/index",
+  "types": "./dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "types": "./dist/types/index.d.ts",
+    "import": "./dist/es/lib/index",
+    "default": "./dist/cjs/lib/index"
+  },
+  "keywords": [
+    "web component",
+    "big-data",
+    "big-list",
+    "scroll-list",
+    "virtual-list",
+    "vue",
+    "react",
+    "angular",
+    "svelte"
+  ],
   "scripts": {
     "dev": "vite --mode development",
-    "build": "vite build --mode production",
+    "build": "rimraf -rf dist && vite build --mode production",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
@@ -13,6 +36,8 @@
     "@faker-js/faker": "^7.6.0",
     "@sveltejs/vite-plugin-svelte": "^1.1.0",
     "@tsconfig/svelte": "^3.0.0",
+    "render-big-data": "^0.2.3",
+    "rimraf": "^3.0.2",
     "rollup-plugin-delete": "^2.0.0",
     "svelte": "^3.52.0",
     "svelte-check": "^2.9.2",

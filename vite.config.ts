@@ -4,7 +4,6 @@ import { resolve } from "path"
 import dts from 'vite-plugin-dts'
 import sveltePreprocess from 'svelte-preprocess';
 import Delete from 'rollup-plugin-delete'
-import { splitVendorChunkPlugin } from 'vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -16,7 +15,7 @@ export default defineConfig({
       preprocess: sveltePreprocess(),
     }),
     dts({
-      outputDir: ['dist'],
+      outputDir: ['dist/types'],
       staticImport: true,
       insertTypesEntry: true,
       beforeWriteFile: (filePath: string, content: string) => {
@@ -27,7 +26,6 @@ export default defineConfig({
         }
       }
     }),
-    // splitVendorChunkPlugin()
   ],
   build: {
     lib: {
@@ -46,18 +44,18 @@ export default defineConfig({
           //让打包目录和我们目录对应
           preserveModules: true,
           //配置打包根目录
-          dir: 'dist',
+          dir: 'dist/es',
           preserveModulesRoot: 'src',
         },
-        // {
-        //   format: 'cjs',
-        //   entryFileNames: '[name].cjs',
-        //   //让打包目录和我们目录对应
-        //   preserveModules: true,
-        //   //配置打包根目录
-        //   dir: 'dist',
-        //   preserveModulesRoot: 'src'
-        // }
+        {
+          format: 'cjs',
+          entryFileNames: '[name].cjs',
+          //让打包目录和我们目录对应
+          preserveModules: true,
+          //配置打包根目录
+          dir: 'dist/cjs',
+          preserveModulesRoot: 'src'
+        }
       ],
       plugins: [
         Delete({

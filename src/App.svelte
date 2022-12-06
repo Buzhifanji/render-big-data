@@ -2,7 +2,7 @@
   import { faker } from "@faker-js/faker";
   import { onDestroy } from "svelte";
 
-  import { initRenderData, visiableData } from "../dist/lib/index";
+  import { initRenderData, visiableData } from "render-big-data";
   // import {
   //   VirtualList,
   //   VirtualListItem,
