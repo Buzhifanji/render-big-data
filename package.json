@@ -1,6 +1,6 @@
 {
   "name": "render-big-data",
-  "version": "0.2.3",
+  "version": "0.3.1",
   "license": "MIT",
   "description": "A web component support big amount data list with high render performance and efficient.",
   "type": "module",
@@ -12,6 +12,7 @@
   ],
   "exports": {
     "types": "./dist/types/index.d.ts",
+
     "import": "./dist/es/lib/index",
     "default": "./dist/cjs/lib/index"
   },
@@ -26,6 +27,15 @@
     "angular",
     "svelte"
   ],
+  "author": "buzhifanji",
+  "bugs": {
+    "url": "https://github.com/Buzhifanji/render-big-data/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Buzhifanji/render-big-data.git"
+  },
+  "homepage": "https://github.com/Buzhifanji/render-big-data#readme",
   "scripts": {
     "dev": "vite --mode development",
     "build": "rimraf -rf dist && vite build --mode production",
@@ -36,7 +46,7 @@
     "@faker-js/faker": "^7.6.0",
     "@sveltejs/vite-plugin-svelte": "^1.1.0",
     "@tsconfig/svelte": "^3.0.0",
-    "render-big-data": "^0.2.3",
+    "render-big-data": "^0.3.1",
     "rimraf": "^3.0.2",
     "rollup-plugin-delete": "^2.0.0",
     "svelte": "^3.52.0",
