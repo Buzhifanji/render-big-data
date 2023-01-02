@@ -11,7 +11,6 @@
 - Big data list with high render performance and efficient.
 - You don't have to care about item size, it will calculate automatic.
 - There is no framework limitation, only one premise, the framework used supports web component
-- 没有框架限制，只有一个前提，使用的框架支持 web component
 
 
 ## Simple usage
@@ -51,7 +50,7 @@ onUnmounted(unsubscribe);
 
 <template>
  <virtual-list>
-    <virtual-list-item v-for="item in list" :index="index"> // index is important here, don't forget it
+    <virtual-list-item v-for="(item, index) in list" :index="index"> // index is important here, don't forget it
        <p class="content">{item.key}: {item.value}</p>
     </virtual-list-item>
   </virtual-list>
