@@ -39,6 +39,7 @@
   "scripts": {
     "dev": "vite --mode development",
     "build": "rimraf -rf dist && vite build --mode production",
+    "build:demo": "rimraf -rf demo && vite build --mode demo",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },

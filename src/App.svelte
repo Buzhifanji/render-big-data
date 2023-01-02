@@ -42,10 +42,10 @@
 <main>
   <h1>render big data</h1>
   <section>
-    <div>
+    <!-- <div>
       <button on:click={() => (selected = 0)}>virtual list</button>
       <button on:click={() => (selected = 1)}>lazy loading</button>
-    </div>
+    </div> -->
     <div class="card">
       {#if selected === 0}
         <VirtualList>
@@ -74,8 +74,9 @@
 </main>
 
 <style>
-  section {
-    width: 500px;
+  main {
+    margin: 0 auto;
+    padding: 0 12em;
   }
   .card {
     width: 100%;
