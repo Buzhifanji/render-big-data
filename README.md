@@ -2,7 +2,7 @@
 
 ![NPM](https://img.shields.io/npm/l/render-big-data?style=for-the-badge)
 ![npm](https://img.shields.io/npm/v/render-big-data?style=for-the-badge)
-[![downloads](https://img.shields.io/npm/dm/render-big-data.svg)](https://www.npmjs.com/package/render-big-data)
+![downloads](https://img.shields.io/npm/dm/render-big-data.svg?style=for-the-badge))
 ![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/render-big-data?style=for-the-badge)
 
 ## Advantages
