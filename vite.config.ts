@@ -71,7 +71,7 @@ export default defineConfig(({ command, mode }) => {
       plugins: [svelte()],
       build: {
         outDir: 'demo',
-        base: 'render-big-data'
+        base: '/render-big-data/'
       }
     }
   }
