@@ -70,9 +70,9 @@ export default defineConfig(({ command, mode }) => {
   } else {
     return {
       plugins: [svelte(), splitVendorChunkPlugin()],
+      base: '/render-big-data/',
       build: {
         outDir: 'demo',
-        base: '/render-big-data/',
         rollupOptions: {
           output: {
             chunkFileNames: 'assets/[name]-[hash].js',
