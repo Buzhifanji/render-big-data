@@ -4,6 +4,7 @@ import { resolve } from "path"
 import dts from 'vite-plugin-dts'
 import sveltePreprocess from 'svelte-preprocess';
 import Delete from 'rollup-plugin-delete'
+import { splitVendorChunkPlugin } from 'vite'
 
 export default defineConfig(({ command, mode }) => {
   if (command === 'build' && mode === "development") {
@@ -68,10 +69,24 @@ export default defineConfig(({ command, mode }) => {
     }
   } else {
     return {
-      plugins: [svelte()],
+      plugins: [svelte(), splitVendorChunkPlugin()],
       build: {
         outDir: 'demo',
-        base: '/render-big-data/'
+        base: '/render-big-data/',
+        rollupOptions: {
+          output: {
+            chunkFileNames: 'assets/[name]-[hash].js',
+            entryFileNames: 'assets/[name]-[hash].js',
+            assetFileNames: 'assets/static/[name]-[hash].[ext]',
+            manualChunks(id: any) {
+              if (id.includes('mockjs')) {
+                return 'mockjs'
+              } else if (id.includes('node_modules')) {
+                return id.toString().split('node_modules/')[1].split('/')[0].toString();
+              }
+            }
+          },
+        }
       }
     }
   }

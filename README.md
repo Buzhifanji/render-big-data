@@ -27,13 +27,13 @@ component:
 ```vue
 <script>
 import { initRenderData, visiableData } from "render-big-data";
-import { faker } from "@faker-js/faker";
+import Mock from "mockjs";
 import { onUnmounted } from "vue";
 
 setTimeout(() => {
   const reslut: { key: number; value: string }[] = [];
   for (let i = 0; i < 10000; i++) {
-    reslut.push({ key: i, value: faker.lorem.sentences() });
+    reslut.push({ key: i, value: Mock.mock({ content: "@cparagraph()" }).content });
   }
 
   initRenderData(reslut);  // first:  prepare all data

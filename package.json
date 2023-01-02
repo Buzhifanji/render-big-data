@@ -12,7 +12,6 @@
   ],
   "exports": {
     "types": "./dist/types/index.d.ts",
-
     "import": "./dist/es/lib/index",
     "default": "./dist/cjs/lib/index"
   },
@@ -47,6 +46,7 @@
     "@faker-js/faker": "^7.6.0",
     "@sveltejs/vite-plugin-svelte": "^1.1.0",
     "@tsconfig/svelte": "^3.0.0",
+    "mockjs": "^1.1.0",
     "render-big-data": "^0.3.1",
     "rimraf": "^3.0.2",
     "rollup-plugin-delete": "^2.0.0",
