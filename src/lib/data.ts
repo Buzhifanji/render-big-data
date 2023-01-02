@@ -22,14 +22,17 @@ export function initRenderData(arr: any[], options?: VirtualListProp) {
   renderData.set(arr);
 
   if (options) {
+    // 合并配置
     updateConfig(options)
 
+    // 更新渲染条数
     updateRenderNum(get(config).renderNum)
 
   } else {
     updateRenderNum(14)
   }
 
+  // 初始化假定的高度
   initHeight(arr.length);
 }
 

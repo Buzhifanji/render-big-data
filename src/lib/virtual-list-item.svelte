@@ -1,11 +1,12 @@
 <svelte:options tag="virtual-list-item" />
 
 <script lang="ts">
-  import { afterUpdate, onDestroy } from "svelte";
+  import { onDestroy } from "svelte";
   import { updateHeight } from "./scroll";
   import { getELmentHeight } from "./util";
   import { scrollState as _scrollState } from "./store";
   import type { ScrollState } from "./interface";
+  import { tick } from "svelte";
 
   export let index: number = 0;
 
@@ -16,7 +17,7 @@
 
   $: _index = scrollState.startIndex + index;
 
-  afterUpdate(() => {
+  tick().then(() => {
     if (node) {
       const height = getELmentHeight(node);
       updateHeight(_index, height);

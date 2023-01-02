@@ -8,6 +8,7 @@ import { binarySearch } from "./util";
 
 let itemHeightCache: number[] = []; // 每一项的高度
 let itemScrollTopCache: number[] = [] // 每一项距离顶部的高度
+let totalCount = 0; // 总条数
 
 function sumOfNumbers(arr: number[] = itemHeightCache) {
   return arr.reduce((prev, current) => prev + current, 0);
@@ -33,6 +34,7 @@ function updateItemScrollTopCache(arr1: number[], arr2: number[]) {
 
 
 export function initHeight(len: number) {
+  totalCount = len;
   const height = get(config).assumedHeight
 
   itemHeightCache = Array(len).fill(height)
@@ -63,21 +65,49 @@ function getStartIndex(srollTop: number) {
   return binarySearch(itemScrollTopCache, srollTop);
 }
 
-export function watchScroll(srollTop: number) {
-
-  const _startIndex = getStartIndex(srollTop);
-  // 如果是奇数，就取前一位偶数
-  const startIndex = _startIndex % 2 !== 0 ? _startIndex - 1 : _startIndex;
-
+function handleIndex(_startIndex: number): [number, number] {
   const renderNum = get(config).renderNum
-  const endIndex = startIndex + renderNum;
-  const scrollTop = itemScrollTopCache[startIndex] || 0;
+  if (totalCount < renderNum) {
+    return [0, totalCount]
+  } else {
+    // 如果是奇数，就取前一位偶数
+    let startIndex = _startIndex % 2 !== 0 ? _startIndex - 1 : _startIndex;
+
+    let endIndex = startIndex + renderNum
+    if (startIndex + renderNum > totalCount) {
+      startIndex = totalCount - renderNum;
+      endIndex = totalCount
+    }
+
+    return [startIndex, endIndex]
+  }
+}
+
+export function watchScroll(scrollTop: number) {
+  const _startIndex = getStartIndex(scrollTop);
+  const [startIndex, endIndex] = handleIndex(_startIndex)
 
   scrollState.update(state => {
     state.startIndex = startIndex
     state.endIndex = endIndex
-    state.scrollTop = scrollTop
+    state.scrollTop = itemScrollTopCache[startIndex] || 0;
 
     return state
   })
+}
+
+
+/**
+ * 水平滚动
+ */
+function scrollHorizontal() {
+
+}
+
+
+/**
+ * 垂直滚动
+ */
+function scrollTopVertical() {
+
 }

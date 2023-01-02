@@ -2,13 +2,13 @@
   import { faker } from "@faker-js/faker";
   import { onDestroy } from "svelte";
 
-  import { initRenderData, visiableData } from "render-big-data";
-  // import {
-  //   VirtualList,
-  //   VirtualListItem,
-  //   initRenderData,
-  //   visiableData,
-  // } from "./lib/index";
+  // import { initRenderData, visiableData } from "render-big-data";
+  import {
+    VirtualList,
+    VirtualListItem,
+    initRenderData,
+    visiableData,
+  } from "./lib/index";
 
   // import "emoji-picker-element";
   interface List {
@@ -47,7 +47,7 @@
       <button on:click={() => (selected = 1)}>lazy loading</button>
     </div>
     <div class="card">
-      <!-- {#if selected === 0}
+      {#if selected === 0}
         <VirtualList>
           {#each data as item, index}
             <VirtualListItem {index}>
@@ -57,8 +57,8 @@
         </VirtualList>
       {:else if selected === 1}
         <div>lazy loading</div>
-      {/if} -->
-      {#if selected === 0}
+      {/if}
+      <!-- {#if selected === 0}
         <virtual-list>
           {#each data as item, index}
             <virtual-list-item {index}>
@@ -68,12 +68,15 @@
         </virtual-list>
       {:else if selected === 1}
         <div>lazy loading</div>
-      {/if}
+      {/if} -->
     </div>
   </section>
 </main>
 
 <style>
+  section {
+    width: 500px;
+  }
   .card {
     width: 100%;
     height: 600px;
