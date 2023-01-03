@@ -4,7 +4,7 @@ specifiers:
   '@sveltejs/vite-plugin-svelte': ^1.1.0
   '@tsconfig/svelte': ^3.0.0
   mockjs: ^1.1.0
-  render-big-data: ^0.3.2
+  render-big-data: ^0.3.5
   rimraf: ^3.0.2
   rollup-plugin-delete: ^2.0.0
   svelte: ^3.52.0
@@ -19,7 +19,7 @@ devDependencies:
   '@sveltejs/vite-plugin-svelte': 1.3.1_svelte@3.53.1+vite@3.2.4
   '@tsconfig/svelte': 3.0.0
   mockjs: 1.1.0
-  render-big-data: 0.3.2
+  render-big-data: 0.3.5
   rimraf: 3.0.2
   rollup-plugin-delete: 2.0.0
   svelte: 3.53.1
@@ -1008,8 +1008,8 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /render-big-data/0.3.2:
-    resolution: {integrity: sha512-aSnxmUO3L+RSjgZEdzZ6QNkrBsWhywZv1QyjCE9Ulysi4AlXuF1HA17Ef7Cp2tfTCb75J/wYEuT+RCRQ3weqAQ==}
+  /render-big-data/0.3.5:
+    resolution: {integrity: sha512-k9+LcECdD5dNkUoxswgBOTiMPbBpc7zxONcvfzKG6c0piOyTD2/W5Lko6K6H6BbR/q/rWUnF6BipA4sV/IziDg==}
     dev: true
 
   /resolve-from/4.0.0:
