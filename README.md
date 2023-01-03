@@ -2,8 +2,10 @@
 
 ![NPM](https://img.shields.io/npm/l/render-big-data?style=for-the-badge)
 ![npm](https://img.shields.io/npm/v/render-big-data?style=for-the-badge)
-![downloads](https://img.shields.io/npm/dm/render-big-data.svg?style=for-the-badge))
+![downloads](https://img.shields.io/npm/dm/render-big-data.svg?style=for-the-badge)
 ![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/render-big-data?style=for-the-badge)
+
+[中文](https://github.com/Buzhifanji/render-big-data#README.zh_CN) | [English](https://github.com/Buzhifanji/render-big-data#readme)
 
 ## Advantages
 
@@ -12,6 +14,9 @@
 - You don't have to care about item size, it will calculate automatic.
 - There is no framework limitation, only one premise, the framework used supports web component
 
+## Live demo
+
+[https://buzhifanji.github.io/render-big-data/](https://buzhifanji.github.io/render-big-data/)
 
 ## Simple usage
 
