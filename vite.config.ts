@@ -7,12 +7,13 @@ import Delete from 'rollup-plugin-delete'
 import { splitVendorChunkPlugin } from 'vite'
 
 export default defineConfig(({ command, mode }) => {
-  if (command === 'build' && mode === "development") {
+  console.log({ command, mode })
+  if (command === 'build' && mode === "production") {
     return {
       plugins: [
         svelte({
           compilerOptions: {
-            customElement: process.env.NODE_ENV === 'production' ? true : false// 开发环境 会报错
+            customElement: true // 开发环境 会报错
           },
           preprocess: sveltePreprocess(),
         }),
