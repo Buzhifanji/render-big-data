@@ -8,6 +8,15 @@ export const scrollState = writable<ScrollState>({
   endIndex: 0, // 结束索引
 })
 
+export const updateScrollState = (value: Partial<ScrollState>) => {
+  scrollState.update(state => {
+    for (const key in value) {
+      state[key] = value[key]
+    }
+
+    return state
+  })
+}
 
 export const renderData = writable([])
 

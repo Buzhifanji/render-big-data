@@ -4,7 +4,7 @@
   import { onDestroy, onMount } from "svelte";
   import type { ScrollState } from "./interface";
   import { getELmentHeight, getELmentIndex } from "./util";
-  import { scrollState as _scrollState } from "./store";
+  import { scrollState as _scrollState, updateScrollState } from "./store";
   import { resetHeight, updateHeight, watchScroll } from "./scroll";
 
   let scrollState: ScrollState;
@@ -31,6 +31,8 @@
   });
 
   onMount(() => {
+    // fixed: 路由切换 导致页面空白的bug，但如果页面有缓存，可能是失效。
+    updateScrollState({ startIndex: 0 });
     resizeObserver?.observe(container);
   });
 

@@ -1,6 +1,6 @@
 import { get } from "svelte/store";
 import type { Height } from "./interface";
-import { config, scrollState } from "./store";
+import { config, scrollState, updateScrollState } from "./store";
 import { binarySearch } from "./util";
 
 /**
@@ -32,8 +32,6 @@ function updateItemScrollTopCache(arr1: number[], arr2: Height[]) {
   return result
 }
 
-
-
 export function initHeight(len: number) {
   totalCount = len;
   const height = get(config).assumedHeight
@@ -42,10 +40,7 @@ export function initHeight(len: number) {
   itemScrollTopCache = initItemScrollTopCache(len, height)
   const totalHeight = sumOfNumbers()
 
-  scrollState.update(state => {
-    state.totalHeight = totalHeight
-    return state
-  })
+  updateScrollState({ totalHeight })
 }
 
 export function updateHeight(index: number, height: number) {
@@ -58,7 +53,9 @@ export function updateHeight(index: number, height: number) {
     itemScrollTopCache = updateItemScrollTopCache(itemScrollTopCache, itemHeightCache);
 
     scrollState.update(state => {
-      state.totalHeight = totalHeight
+      state.totalHeight = totalHeight;
+      // 当 scroll 滚动的时候，itemScrollTopCache 并未及时更新，所以获取的数据还是旧数据，会导致scrollTop不正确。所以需要更新 scrollTop
+      state.scrollTop = itemScrollTopCache[state.startIndex]
       return state
     })
   }
@@ -95,13 +92,7 @@ export function watchScroll(scrollTop: number) {
   const _startIndex = getStartIndex(scrollTop);
   const [startIndex, endIndex] = handleIndex(_startIndex)
 
-  scrollState.update(state => {
-    state.startIndex = startIndex
-    state.endIndex = endIndex
-    state.scrollTop = itemScrollTopCache[startIndex] || 0;
-
-    return state
-  })
+  updateScrollState({ startIndex, endIndex, scrollTop: itemScrollTopCache[startIndex] || 0 })
 }
 
 
