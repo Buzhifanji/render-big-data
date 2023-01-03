@@ -5,7 +5,7 @@
 ![downloads](https://img.shields.io/npm/dm/render-big-data.svg?style=for-the-badge)
 ![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/render-big-data?style=for-the-badge)
 
-[中文](./README.zh_CN.md) | [English](./README.md)
+[中文](./README.zh_CN.md) | [English](./README)
 
 ## Advantages
 
