@@ -5,7 +5,7 @@
   import type { ScrollState } from "./interface";
   import { getELmentHeight, getELmentIndex } from "./util";
   import { scrollState as _scrollState } from "./store";
-  import { updateHeight, watchScroll } from "./scroll";
+  import { resetHeight, updateHeight, watchScroll } from "./scroll";
 
   let scrollState: ScrollState;
   const unsubscribe = _scrollState.subscribe((value) => (scrollState = value));
@@ -21,6 +21,7 @@
   // 当 container 尺寸发生变化的时候，更新高度
   const resizeObserver = new ResizeObserver(() => {
     requestAnimationFrame(() => {
+      resetHeight();
       [...content.children].forEach((node: HTMLElement) => {
         const index = getELmentIndex(node);
         const height = getELmentHeight(node);

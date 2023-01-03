@@ -1,4 +1,5 @@
 import { get } from "svelte/store";
+import type { Height } from "./interface";
 import { config, scrollState } from "./store";
 import { binarySearch } from "./util";
 
@@ -6,12 +7,12 @@ import { binarySearch } from "./util";
  * 先给出一个假定的高度，当dom渲染完后，更新真实的高度
  */
 
-let itemHeightCache: number[] = []; // 每一项的高度
+let itemHeightCache: Height[] = []; // 每一项的高度
 let itemScrollTopCache: number[] = [] // 每一项距离顶部的高度
 let totalCount = 0; // 总条数
 
-function sumOfNumbers(arr: number[] = itemHeightCache) {
-  return arr.reduce((prev, current) => prev + current, 0);
+function sumOfNumbers(arr: Height[] = itemHeightCache) {
+  return arr.reduce((prev, current) => prev + current.value, 0);
 }
 
 function initItemScrollTopCache(n: number, item: number) {
@@ -22,10 +23,10 @@ function initItemScrollTopCache(n: number, item: number) {
   return result
 }
 
-function updateItemScrollTopCache(arr1: number[], arr2: number[]) {
+function updateItemScrollTopCache(arr1: number[], arr2: Height[]) {
   const result: number[] = [0];
   for (let i = 1; i < arr1.length; i++) {
-    result[i] = arr1[i - 1] + arr2[i - 1];
+    result[i] = arr1[i - 1] + arr2[i - 1].value;
   }
 
   return result
@@ -37,7 +38,7 @@ export function initHeight(len: number) {
   totalCount = len;
   const height = get(config).assumedHeight
 
-  itemHeightCache = Array(len).fill(height)
+  itemHeightCache = Array(len).fill({ isRecord: false, value: height })
   itemScrollTopCache = initItemScrollTopCache(len, height)
   const totalHeight = sumOfNumbers()
 
@@ -48,16 +49,23 @@ export function initHeight(len: number) {
 }
 
 export function updateHeight(index: number, height: number) {
-  // dom 元素加载完，得到实际高度，重新赋值
-  itemHeightCache[index] = height
-  // 重新确定虚拟列表的实际高度
-  const totalHeight = sumOfNumbers()
-  itemScrollTopCache = updateItemScrollTopCache(itemScrollTopCache, itemHeightCache);
+  // 加入缓存，减少重复的计算
+  if (itemHeightCache[index] && !itemHeightCache[index].isRecord) {
+    // dom 元素加载完，得到实际高度，重新赋值
+    itemHeightCache[index] = { isRecord: true, value: height }
+    // 重新确定虚拟列表的实际高度
+    const totalHeight = sumOfNumbers()
+    itemScrollTopCache = updateItemScrollTopCache(itemScrollTopCache, itemHeightCache);
 
-  scrollState.update(state => {
-    state.totalHeight = totalHeight
-    return state
-  })
+    scrollState.update(state => {
+      state.totalHeight = totalHeight
+      return state
+    })
+  }
+}
+
+export function resetHeight() {
+  itemHeightCache.forEach(item => item.isRecord = false)
 }
 
 // 获取渲染项开始索引
