@@ -1,6 +1,6 @@
 {
   "name": "render-big-data",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "license": "MIT",
   "description": "A web component support big amount data list with high render performance and efficient.",
   "type": "module",
