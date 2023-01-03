@@ -5,7 +5,7 @@
 ![downloads](https://img.shields.io/npm/dm/render-big-data.svg?style=for-the-badge)
 ![npm bundle size (scoped)](https://img.shields.io/bundlephobia/minzip/render-big-data?style=for-the-badge)
 
-[中文](https://github.com/Buzhifanji/render-big-data#README.zh_CN.md) | [English](https://github.com/Buzhifanji/render-big-data#readme)
+[中文](https://github.com/Buzhifanji/render-big-data/blob/main/README.zh_CN.md) | [English](https://github.com/Buzhifanji/render-big-data#readme)
 
 ## 特点
 
