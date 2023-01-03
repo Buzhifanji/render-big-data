@@ -44,6 +44,11 @@ export function initHeight(len: number) {
 }
 
 export function updateHeight(index: number, height: number) {
+  // 会出现高度 为0的情况，导致数据丢失
+  if (height === 0) {
+    return
+  }
+
   // 加入缓存，减少重复的计算
   if (itemHeightCache[index] && !itemHeightCache[index].isRecord) {
     // dom 元素加载完，得到实际高度，重新赋值

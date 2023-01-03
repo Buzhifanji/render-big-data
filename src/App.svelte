@@ -2,7 +2,6 @@
   import { onDestroy } from "svelte";
   import Mock from "mockjs";
 
-  // import { initRenderData, visiableData } from "render-big-data";
   import {
     VirtualList,
     VirtualListItem,
@@ -10,7 +9,6 @@
     visiableData,
   } from "./lib/index";
 
-  // import "emoji-picker-element";
   interface List {
     key: number;
     value: string;
@@ -61,17 +59,6 @@
       {:else if selected === 1}
         <div>lazy loading</div>
       {/if}
-      <!-- {#if selected === 0}
-        <virtual-list>
-          {#each data as item, index}
-            <virtual-list-item {index}>
-              <p class="content">{item.key}: {item.value}</p>
-            </virtual-list-item>
-          {/each}
-        </virtual-list>
-      {:else if selected === 1}
-        <div>lazy loading</div>
-      {/if} -->
     </div>
   </section>
 </main>
